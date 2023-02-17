@@ -6,3 +6,5 @@ unzip /tmp/frontend.zip
 systemctl enable nginx
 systemctl start nginx
 
+## roboshop configs are not copied yet
+##  if any command failed we need to stop the script there itself.
