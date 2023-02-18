@@ -8,4 +8,4 @@ systemctl enable nginx
 systemctl restart nginx
 
 ## roboshop configs are not copied yet
-##  if any command failed we need to stop the script there itself.
+##  if any command failed we need to stop the script there itself
