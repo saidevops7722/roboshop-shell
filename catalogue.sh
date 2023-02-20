@@ -47,3 +47,4 @@ print_head "load schema"
 mongo --host mongodb.devopsb71.site </app/schema/catalogue.js
 
 
+
