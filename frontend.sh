@@ -8,9 +8,9 @@ rm -rf /usr/share/nginx/html/* &>>${log_file}
 
 print_head "downloading frontend content"
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>${log_file}
+cd /usr/share/nginx/html
 
 print_head "extracting the downloaded content"
-cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>${log_file}
 
 print_head "copying the nginx conf for roboshop"
