@@ -22,4 +22,5 @@ systemctl enable nginx &>>${log_file}
 print_head "starting the nginx"
 systemctl restart nginx &>>${log_file}
 
+
 ##  if any command failed we need to stop the script there itself
