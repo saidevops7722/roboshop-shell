@@ -3,7 +3,7 @@ source common.sh
 print_head "configure the nodejs repo"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${log_file}
 
-print_head"installing nodejs service"
+print_head "installing nodejs service"
 yum install nodejs -y &>>${log_file}
 
 print_head "create roboshop user"
@@ -44,6 +44,6 @@ print_head "install mongodb client"
 yum install mongodb-org-shell -y &>>${log_file}
 
 print_head "load schema"
-mongo --host mongodb.devops71.site </app/schema/catalogue.js &>>${log_file}
+mongo --host mongodb.devopsb71.site </app/schema/catalogue.js
 
 
