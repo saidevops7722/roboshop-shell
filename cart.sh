@@ -1,10 +1,5 @@
 source common.sh
 
-component=catalogue
+component=cart
 schema_type="mongo"
 nodejs
-
-
-
-
-
