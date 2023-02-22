@@ -26,12 +26,12 @@ rm -rf /app/* &>>${log_file}
 echo $?
 
 print_head "downloading the app content"
-curl -L -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip &>>${log_file}
+curl -L -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user.zip &>>${log_file}
 cd /app
 echo $?
 
 print_head "extracting the downloaded content"
-unzip /tmp/catalogue.zip &>>${log_file}
+unzip /tmp/user.zip &>>${log_file}
 echo $?
 
 print_head "installing nodejs dependencies"
@@ -39,19 +39,19 @@ npm install &>>${log_file}
 echo $?
 
 print_head "copying the systemd service file"
-cp ${code_dir}/configs/catalogue.service /etc/systemd/system/catalogue.service &>>${log_file}
+cp ${code_dir}/configs/user.service /etc/systemd/system/user.service &>>${log_file}
 echo $?
 
 print_head "reload systemd"
 systemctl daemon-reload &>>${log_file}
 echo $?
 
-print_head "enabling catalogue service"
-systemctl enable catalogue &>>${log_file}
+print_head "enabling user service"
+systemctl enable user &>>${log_file}
 echo $?
 
-print_head "starting the catalogue service"
-systemctl restart catalogue &>>${log_file}
+print_head "starting the user service"
+systemctl restart user &>>${log_file}
 echo $?
 
 print_head "copying the mongodb repo file"
@@ -63,11 +63,5 @@ yum install mongodb-org-shell -y &>>${log_file}
 echo $?
 
 print_head "load schema"
-mongo --host mongodb.devopsb71.site </app/schema/catalogue.js &>>${log_file}
+mongo --host mongodb.devopsb71.site </app/schema/user.js &>>${log_file}
 echo $?
-
-
-
-
-
-
