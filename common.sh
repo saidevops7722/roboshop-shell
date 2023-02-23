@@ -20,6 +20,8 @@ systemd_setup() {
     cp ${code_dir}/configs/${component}.service /etc/systemd/system/${component}.service &>>${log_file}
     status_check $?
 
+  sed -i -e "s/ROBOSHOP_USER_PASSWORD/${roboshop_app_password}" /etc/systemd/system/${component}.service &>>${log_file}
+
     print_head " reload systemd "
     systemctl daemon-reload &>>${log_file}
     status_check $?
@@ -120,11 +122,9 @@ yum install maven -y &>>${log_file}
 
  app_prereq_setup
 
-print_head " download dependencies "
-mvn clean package &>>${log_file}
- status_check $?
 
 print_head " download dependencies and package "
+mvn clean package &>>${log_file}
 mv target/${component}-1.0.jar ${component}.jar &>>${log_file}
  status_check $?
 
@@ -135,3 +135,17 @@ systemd_setup
 
 }
 
+python() {
+  print_head " install python "
+ yum install python36 gcc python3-devel -y &>>${log_file}
+   status_check $?
+
+   app_prereq_setup
+
+  print_head " download dependencies  "
+ pip3.6 install -r requirements.txt &>>${log_file}
+ status_check $?
+
+  # systemd setup function
+  systemd_setup
+ }
