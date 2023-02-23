@@ -79,7 +79,7 @@ systemd_setup() {
     status_check $?
 
     print_head " load schema "
-    mongo --host mongodb.devopsb71.site </app/schema/${component}.js &>>${log_file}
+    mongo --host mongodb-dev.devopsb71.site </app/schema/${component}.js &>>${log_file}
     status_check $?
 
     elif [ "${schema_type}" == "mysql" ]; then
@@ -88,7 +88,7 @@ systemd_setup() {
       status_check $?
 
       print_head " load schema "
-      mysql -h mysql.devopsb71.site -uroot -p${mysql_root_password} < /app/schema/shipping.sql &>>${log_file}
+      mysql -h mysql-dev.devopsb71.site -uroot -p${mysql_root_password} < /app/schema/shipping.sql &>>${log_file}
       status_check $?
       fi
       }
