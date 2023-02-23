@@ -31,7 +31,7 @@ systemd_setup() {
     status_check $?
 
     print_head " starting the ${component} service "
-    systemctl restart ${component}e &>>${log_file}
+    systemctl restart ${component} &>>${log_file}
     status_check $?
 
     }
