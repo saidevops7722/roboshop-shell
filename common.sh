@@ -42,27 +42,27 @@ systemd_setup() {
    print_head " create roboshop user "
    id roboshop &>>${log_file}
    if [ $? -ne 0 ]; then
-     useradd roboshop &>>${lof_file}
+     useradd roboshop &>>${log_file}
      fi
      status_check $?
 
      print_head " create application directory "
      if [ ! -d /app ]; then
-       mkdir /app &>>${lof_file}
+       mkdir /app &>>${log_file}
        fi
        status_check $?
 
        print_head " delete old content "
-       rm -rf /app/* &>>${lof_file}
+       rm -rf /app/* &>>${log_file}
         status_check $?
 
         print_head " downloading app content "
-        curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${lof_file}
+        curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log_file}
         status_check $?
          cd /app
 
          print_head " extracting app content "
-         unzip /tmp/catalogue.zip &>>${lof_file}
+         unzip /tmp/catalogue.zip &>>${log_file}
          status_check $?
 
          }
